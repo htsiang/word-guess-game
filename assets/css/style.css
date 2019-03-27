@@ -1,0 +1,63 @@
+/* insert custom font */
+@font-face {
+    font-family: "lovelo-font";
+    src: url(../fonts/Lovelo/Lovelo-LineBold.eot), url(../fonts/Lovelo/Lovelo-LineBold.otf), url(../fonts/Lovelo/Lovelo-LineBold.ttf), url(../fonts/Lovelo/Lovelo-LineBold.woff), url(../fonts/Lovelo/Lovelo-LineBold.svg);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    background: linear-gradient(to bottom left, #9fcaec 0%, #cbb5db 25%, #edaac9 50%, #f9ccb7 100%);
+    background-color: #cbb5db;
+}
+
+header {
+    font-size: 100px;
+    text-align: center;
+    font-family: "lovelo-font";
+    color: #ffffff;
+}
+
+.container {
+    margin: 0 auto;
+    width: 960px;
+
+    border-style: double;
+    border-color: #ffffff;
+    border-width: 4px;
+
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+#image-section {
+    width: 50%;
+    float: left;
+    height: 100%;
+}
+
+#game-section {
+    width: 50%;
+    height: 100%;
+    float: right;
+
+    border-left-style: double;
+    border-left-color: #ffffff;
+    border-left-width: 4px;
+
+    padding: 30px;
+}
+
+/* prevents floated objects from overflowing the container "section" */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+#instructions {
+    padding-bottom: 15px;
+}

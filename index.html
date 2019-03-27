@@ -7,26 +7,38 @@
     <!--link css-->
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-</head>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <title>Hangman</title>
 <body>
     <header>Hangman</header>
+
     <h2>KPop</h2>
 
-    <!--for pictures of kpop groups?-->
-    <section></section>
+    <section class="container clearfix">
+        <!--for pictures of kpop groups?-->
+        <div id="image-section">
+            <img id="kpop-image">
+        </div>
 
-    <!--the actual hangman game text-->
-    <section>
-        <p>Press any key to get started!</p>
+        <!--the actual hangman game text-->
+        <div id="game-section">
+            <p id="instructions">Press any letter to start guessing!</p>
 
-        <p>Wins</p>
+            <p>Wins:</p>
+            <p id="win-count">0</p>
 
-        <p>Current word:</p>
+            <p>Losses:</p>
+            <p id="loss-count">0</p>
 
-        <!--blank underscores to signify current word-->
-        <p></p>
+            <p>Current word:</p>
+            <p id="current-word"></p>
 
-        <p>Number of guesses remaining:</p>
+            <p>Number of guesses remaining:</p>
+            <p id="guesses-remaining">15</p>
+
+            <p>Letters already guessed:</p>
+            <p id="letters-used"></p>
+        </div>
     </section>
 
     <!--link javascript-->
