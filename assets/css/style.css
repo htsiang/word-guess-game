@@ -1,7 +1,12 @@
 /* insert custom font */
 @font-face {
-    font-family: "lovelo-font";
+    font-family: "lovelo-bold";
     src: url(../fonts/Lovelo/Lovelo-LineBold.eot), url(../fonts/Lovelo/Lovelo-LineBold.otf), url(../fonts/Lovelo/Lovelo-LineBold.ttf), url(../fonts/Lovelo/Lovelo-LineBold.woff), url(../fonts/Lovelo/Lovelo-LineBold.svg);
+}
+
+@font-face {
+    font-family: "lovelo-light";
+    src: url(../fonts/Lovelo/Lovelo-LineLight.eot), url(../fonts/Lovelo/Lovelo-LineLight.otf), url(../fonts/Lovelo/Lovelo-LineLight.ttf), url(../fonts/Lovelo/Lovelo-LineLight.woff), url(../fonts/Lovelo/Lovelo-LineLight.svg);
 }
 
 * {
@@ -15,15 +20,37 @@ html {
 }
 
 header {
-    font-size: 100px;
+    margin-bottom: 30px;
     text-align: center;
-    font-family: "lovelo-font";
+}
+
+h1 {
+    font-size: 100px;
+    font-family: "lovelo-bold";
     color: #ffffff;
+    margin-bottom: -40px;
+}
+
+h2 {
+    padding-left: 450px;
+    font-size: 60px;
+    font-family: "lovelo-light";
+    color: #000000;
+}
+
+#song-title {
+    margin: 0 auto;
+    text-align: center;
+    font-family: "lovelo-light";
+    font-size: 40px;
+    padding-bottom: 10px;
+    max-width: 960px;
 }
 
 .container {
     margin: 0 auto;
     width: 960px;
+    height: 500px;
 
     border-style: double;
     border-color: #ffffff;
@@ -37,6 +64,10 @@ header {
     width: 50%;
     float: left;
     height: 100%;
+
+    border-right-style: double;
+    border-right-color: #ffffff;
+    border-right-width: 4px;
 }
 
 #game-section {
@@ -60,4 +91,12 @@ header {
 
 #instructions {
     padding-bottom: 15px;
+}
+
+#kpop-image {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 95%;
+    max-height: 92%;
 }

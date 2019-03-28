@@ -10,14 +10,21 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <title>Hangman</title>
 <body>
-    <header>Hangman</header>
-
-    <h2>KPop</h2>
+    <header>
+        <h1>Hangman</h1>
+        <h2>KPop</h2>
+    </header>
+    
+    
+    <div id="song-title"></div>    
 
     <section class="container clearfix">
         <!--for pictures of kpop groups?-->
         <div id="image-section">
-            <img id="kpop-image">
+            <audio id="kpop-song">
+                <source src="" type="audio/mpeg">
+            </audio>
+            <img id="kpop-image" src="" alt="">
         </div>
 
         <!--the actual hangman game text-->

@@ -6,7 +6,16 @@ function consoleLogArr(arr) {
 };
 
 // array of potential word choices
-var wordChoices = ["bangtan", "monstax", "blackpink"];
+var kpopChoices = [
+    {word: "bangtan", img: "bts.jpeg", song: "Idol by Bangtan Sonyeondan", songsrc: "idol-bangtan.mp3"},
+    {word: "monstax", img: "monstax.jpg", song: "Spotlight by Monsta X", songsrc: "spotlight-monstax.mp3"},
+    {word: "blackpink", img: "blackpink.jpg", song: "DDU-DU DDU-DU by Blackpink", songsrc: "ddududdudu-blackpink.mp3"},
+    {word: "epikhigh", img: "epikhigh.jpg", song: "It's Cold by Epik High ft. Lee Hi", songsrc: "itscold-epikhigh.mp3"},
+    {word: "shinee", img: "shinee.jpg", song: "Sherlock by SHINee", songsrc: "sherlock-shinee.mp3"},
+    {word: "sunmi", img: "sunmi.jpg", song: "Siren by Sunmi", songsrc: "siren-sunmi.mp3"},
+    {word: "girlsgeneration", img: "girlsgeneration.jpg", song: "Genie by Girl's Generation", songsrc: "genie-girlsgeneration.mp3"},
+    {word: "twice", img: "twice.jpg", song: "What is Love by Twice", songsrc: "whatislove-twice.mp3"},
+    {word: "mamamoo", img: "mamamoo.jpg", song: "Starry Night by Mamamoo", songsrc: "starrynight-mamamoo.mp3"}];
 var guessesRemaining = 15; // # of guesses allowed
 var winCount = 0; // track number of wins
 var lossCount = 0; // track number of losses
@@ -26,44 +35,7 @@ var trackGuesses = document.getElementById("guesses-remaining");
 var targetLettersUsed = document.getElementById("letters-used");
 var lettersUsed;
 
-// new game function resets hangman word & letter tracking for new hangman game
-function newGame() {
-    // resets # of guesses
-    guessesRemaining = 15;
-    trackGuesses.textContent = guessesRemaining
 
-    // resets letters we've tried already to nothing
-    attemptedGuesses.length=0;
-
-    // resets display of letters already guessed on html document
-    targetLettersUsed.textContent = "";
-
-    // resets hangmanArray to nothing
-    hangmanArray.length = 0;
-
-    // computer selects new word from array
-    hangmanWord = wordChoices[Math.floor(Math.random()*wordChoices.length)];
-    console.log(hangmanWord);
-    // pushes new word into hangmanArray
-    for (var i=0; i<hangmanWord.length; i++) {
-        hangmanArray.push(hangmanWord.charAt(i));
-    };
-    consoleLogArr(hangmanArray);
-
-    blankArray.length = 0; // resets blankArray
-    // resets targetWord to fill blankArray using new word
-    targetWord.textContent = "";
-    for (var i=0; i<hangmanWord.length; i++) {
-        currentWord = document.createElement("span");
-        currentWord.textContent = "_ ";
-        targetWord.appendChild(currentWord);
-
-        // creates array w/ # of blanks needed to be filled
-        blankArray.push("_ ");
-    };
-
-    consoleLogArr(blankArray);
-};
 
 newGame();
 
@@ -107,7 +79,7 @@ document.onkeyup = function() {
             // append new version of currentWord
             for (var i=0; i<blankArray.length; i++) {
                 currentWord = document.createElement("span");
-                currentWord.textContent = blankArray[i];
+                currentWord.textContent = blankArray[i] + " ";
                 targetWord.appendChild(currentWord);
             };
         };
@@ -125,6 +97,8 @@ document.onkeyup = function() {
                 var targetWin = document.getElementById("win-count");
                 targetWin.textContent = winCount;
 
+                showImageAndSong(hangmanWord);
+
                 newGame();
             }
             else {
@@ -138,10 +112,71 @@ document.onkeyup = function() {
             var targetLoss = document.getElementById("loss-count");
             targetLoss.textContent = lossCount;
 
+            showImageAndSong(hangmanWord);
+
             newGame();
         };
     }
     else {
         console.log("Already tried.");
+    };
+};
+
+// ******all my functions defined here*******
+
+// new game function resets hangman word & letter tracking for new hangman game
+function newGame() {
+    // resets # of guesses
+    guessesRemaining = 15;
+    trackGuesses.textContent = guessesRemaining
+
+    // resets letters we've tried already to nothing
+    attemptedGuesses.length=0;
+
+    // resets display of letters already guessed on html document
+    targetLettersUsed.textContent = "";
+
+    // resets hangmanArray to nothing
+    hangmanArray.length = 0;
+
+    // computer selects new word from array
+    hangmanWord = kpopChoices[Math.floor(Math.random()*kpopChoices.length)].word;
+    console.log(hangmanWord);
+    // pushes new word into hangmanArray
+    for (var i=0; i<hangmanWord.length; i++) {
+        hangmanArray.push(hangmanWord.charAt(i));
+    };
+    consoleLogArr(hangmanArray);
+
+    blankArray.length = 0; // resets blankArray
+    // resets targetWord to fill blankArray using new word
+    targetWord.textContent = "";
+    for (var i=0; i<hangmanWord.length; i++) {
+        currentWord = document.createElement("span");
+        currentWord.textContent = "_ ";
+        targetWord.appendChild(currentWord);
+
+        // creates array w/ # of blanks needed to be filled
+        blankArray.push("_ ");
+    };
+
+    consoleLogArr(blankArray);
+};
+
+// show image & song associated w/ hangman word
+function showImageAndSong(hangmanWord) {
+    for(var i=0; i<kpopChoices.length; i++) {
+        if(hangmanWord===kpopChoices[i].word) {
+            // display correct song title
+            document.getElementById("song-title").textContent = kpopChoices[i].song;
+
+            // change image & display image
+            document.getElementById("kpop-image").src = "assets/images/" + kpopChoices[i].img;
+            document.getElementById("kpop-image").alt = kpopChoices[i].word;
+
+            // change song & play song
+            document.getElementById("kpop-song").src = "assets/songs/" + kpopChoices[i].songsrc;
+            document.getElementById("kpop-song").play();
+        };
     };
 };
